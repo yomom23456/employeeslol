@@ -61,22 +61,22 @@ class Employee(ABC):
         return self.__manager
     @property
     def name(self):
-        return self.__name  
+        return self.__name
     @property
     def happiness(self):
-        return self.__happiness  
+        return self.__happiness 
     @happiness.setter
     def happiness(self, value):
-        self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))  
+        self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value)) 
     @property
     def performance(self):
-        return self.__performance 
+        return self.__performance
     @performance.setter
     def performance(self,value):
         self.__performance = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))
     @abstractmethod
     def work(self):
-        pass   
+        pass  
     def interact(self, x):
         if x.name not in self.relationships:
             self.relationships[x.name] = 0
@@ -106,7 +106,7 @@ class Manager(Employee):
             for person in self.relationships:
                 self.relationships[person] -= 1
         else:
-            self.happiness += 1    
+            self.happiness += 1   
 
 # TODO: implement this class. You may delete this comment when you are done.
 class TemporaryEmployee(Employee):
@@ -143,5 +143,4 @@ class PermanentEmployee(Employee):
             if other.happiness > HAPPINESS_THRESHOLD and self.performance > PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
                 self.savings += MANAGER_BONUS
             elif other.happiness <= HAPPINESS_THRESHOLD:
-                self.happiness -= 1
-                
+                self.happiness -= 1               
