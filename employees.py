@@ -31,8 +31,6 @@ PERCENTAGE_MAX = 100
 PERCENTAGE_MIN = 0
 SALARY_ERROR_MESSAGE = "Salary must be non-negative."
 
-
-# TODO: implement this class. You may delete this comment when you are done.
 class Employee(ABC):
     """
     Abstract base class representing a generic employee in the system.
@@ -50,6 +48,7 @@ class Employee(ABC):
 
     @property
     def salary(self):
+        """declaring the salary"""
         return self.__salary
     @salary.setter
     def salary(self,value):
@@ -58,18 +57,22 @@ class Employee(ABC):
         self.__salary = value
     @property
     def manager(self):
+        """declaring the manager"""
         return self.__manager
     @property
     def name(self):
+        """declaring the name"""
         return self.__name
     @property
     def happiness(self):
+        """declaring the happiness"""
         return self.__happiness 
     @happiness.setter
     def happiness(self, value):
         self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value)) 
     @property
     def performance(self):
+        """declaring the performance"""
         return self.__performance
     @performance.setter
     def performance(self,value):
@@ -96,7 +99,6 @@ class Employee(ABC):
         return (f"{self.name}\n\tSalary: ${self.salary}\n\tSavings: ${self.savings}\n\t"
                 f"Happiness: {self.happiness}%\n\tPerformance: {self.performance}%")
 
-# TODO: implement this class. You may delete this comment when you are done.
 class Manager(Employee):
     def work(self):
         manager_performance = random.randint(-5, 5)
@@ -108,7 +110,6 @@ class Manager(Employee):
         else:
             self.happiness += 1   
 
-# TODO: implement this class. You may delete this comment when you are done.
 class TemporaryEmployee(Employee):
     def work(self):
         manager_performance = random.randint(-15,15)
@@ -129,7 +130,6 @@ class TemporaryEmployee(Employee):
                 if self.salary == 0:
                     self.is_employed = False
 
-# TODO: implement this class. You may delete this comment when you are done.
 class PermanentEmployee(Employee):
     def work(self):
         manager_performance = random.randint(-10,10)
