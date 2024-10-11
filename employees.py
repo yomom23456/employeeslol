@@ -32,6 +32,7 @@ PERCENTAGE_MIN = 0
 SALARY_ERROR_MESSAGE = "Salary must be non-negative."
 
 class Employee(ABC):
+    """class representing an employee"""
     """
     Abstract base class representing a generic employee in the system.
     """
@@ -66,10 +67,10 @@ class Employee(ABC):
     @property
     def happiness(self):
         """declaring the happiness"""
-        return self.__happiness 
+        return self.__happiness
     @happiness.setter
     def happiness(self, value):
-        self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value)) 
+        self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))
     @property
     def performance(self):
         """declaring the performance"""
@@ -79,8 +80,10 @@ class Employee(ABC):
         self.__performance = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))
     @abstractmethod
     def work(self):
-        pass  
+        """declaring the work"""
+        pass
     def interact(self, x):
+        """declaring the interact"""
         if x.name not in self.relationships:
             self.relationships[x.name] = 0
         y = self.relationships[x.name]
@@ -93,6 +96,7 @@ class Employee(ABC):
             self.relationships[x.name] -= 1
             self.happiness -= 1
     def daily_expense(self):
+        """declaring the daily expense"""
         self.savings -= DAILY_EXPENSE
         self.happiness -= 1
     def __str__(self):
@@ -100,6 +104,7 @@ class Employee(ABC):
                 f"Happiness: {self.happiness}%\n\tPerformance: {self.performance}%")
 
 class Manager(Employee):
+    """class representing a manager"""
     def work(self):
         manager_performance = random.randint(-5, 5)
         self.performance += manager_performance
@@ -111,6 +116,7 @@ class Manager(Employee):
             self.happiness += 1   
 
 class TemporaryEmployee(Employee):
+    """class representing a temporary employee"""
     def work(self):
         manager_performance = random.randint(-15,15)
         self.performance += manager_performance
@@ -131,6 +137,7 @@ class TemporaryEmployee(Employee):
                     self.is_employed = False
 
 class PermanentEmployee(Employee):
+    """class representing a permanent employee"""
     def work(self):
         manager_performance = random.randint(-10,10)
         self.performance += manager_performance
