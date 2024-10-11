@@ -51,41 +51,32 @@ class Employee(ABC):
     @property
     def salary(self):
         return self.__salary
-    
     @salary.setter
     def salary(self,value):
         if value < 0:
             raise ValueError(SALARY_ERROR_MESSAGE)
         self.__salary = value
-
     @property
     def manager(self):
         return self.__manager
-    
     @property
     def name(self):
-        return self.__name
-   
+        return self.__name  
     @property
     def happiness(self):
-        return self.__happiness
-    
+        return self.__happiness  
     @happiness.setter
     def happiness(self, value):
-        self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))
-    
+        self.__happiness = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))  
     @property
     def performance(self):
-        return self.__performance
-    
+        return self.__performance 
     @performance.setter
     def performance(self,value):
         self.__performance = max(PERCENTAGE_MIN, min(PERCENTAGE_MAX, value))
-
     @abstractmethod
     def work(self):
-        pass
-    
+        pass   
     def interact(self, x):
         if x.name not in self.relationships:
             self.relationships[x.name] = 0
@@ -98,16 +89,12 @@ class Employee(ABC):
         else:
             self.relationships[x.name] -= 1
             self.happiness -= 1
-    
     def daily_expense(self):
         self.savings -= DAILY_EXPENSE
         self.happiness -= 1
-
     def __str__(self):
         return (f"{self.name}\n\tSalary: ${self.salary}\n\tSavings: ${self.savings}\n\t"
                 f"Happiness: {self.happiness}%\n\tPerformance: {self.performance}%")
-
-
 
 # TODO: implement this class. You may delete this comment when you are done.
 class Manager(Employee):
